@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "All";
+}
+
+<h2>All clients</h2>
+
+@foreach (var client in Model)
+{
+    <div>
+        @client.Name
+        <a href="/clients/@client.Id/delete"><button>Delete</button></a>
+    </div>
+}
+
+    <a href="/clients"><button>Back</button></a>
