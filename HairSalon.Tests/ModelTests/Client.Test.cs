@@ -27,5 +27,13 @@ namespace HairSalon.Tests
             Assert.AreEqual("Tim", newClient.Name);
         }
 
+        [TestMethod]
+        public void Equals_ReturnsTrueIfObjectsAreTheSame_ReturnsEqualValue()
+        {
+            Client firstItem = new Client("Bob", 1);
+            Client secondItem = new Client("Bob", 1);
+
+            Assert.AreEqual(firstItem, secondItem);
+        }
     }
 }
