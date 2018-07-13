@@ -20,7 +20,21 @@ namespace HairSalon.Models
             this.ClientId = clientId;
         }
 
-
+        public override bool Equals(System.Object otherStylist)
+        {
+            if (!(otherStylist is Stylist))
+            {
+                return false;
+            }
+            else
+            {
+                Stylist newStylist = (Stylist)otherStylist;
+                bool nameEquality = (this.Name == newStylist.Name);
+                bool detailsEquality = (this.Details == newStylist.Details);
+                bool clientIdEquality = (this.ClientId == newStylist.ClientId);
+                return (nameEquality && detailsEquality && clientIdEquality);
+            }
+        }
 
 
 
