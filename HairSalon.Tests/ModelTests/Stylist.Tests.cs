@@ -26,6 +26,27 @@ namespace HairSalon.Tests
 
             Assert.AreEqual("Tim", newStylist.Name);
         }
+
+        [TestMethod]
+        public void Equals_ReturnsTrueIfObjectsAreTheSame_ReturnsEqualValue()
+        {
+            Stylist firstItem = new Stylist("Bob", "Cool", 4);
+            Stylist secondItem = new Stylist("Bob", "Cool", 4);
+
+            Assert.AreEqual(firstItem, secondItem);
+        }
+
+        [TestMethod]
+        public void Find_FindsStylist_ReturnEqualValue()
+        {
+            Stylist newStylistJeff = new Stylist("Bob", "Cool", 4, 1);
+            Stylist newStylistTom = new Stylist("Tom", "Funny", 3, 2);
+            List<Stylist> newList = Stylist.GetAll();
+            Stylist foundStylist = Stylist.Find(1);
+            Stylist actualStylist = newList[1];
+            Assert.AreEqual(foundStylist, actualStylist);
+        }
+
     }
 
 }
