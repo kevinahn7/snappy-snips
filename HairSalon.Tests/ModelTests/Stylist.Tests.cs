@@ -57,7 +57,17 @@ namespace HairSalon.Tests
             Assert.AreEqual(foundStylist, newStylistJeff);
         }
 
-
+        [TestMethod]
+        public void GetAll_GetsEntries_True()
+        {
+            Stylist newStylistJeff = new Stylist("Jeff", "Cool", 4);
+            newStylistJeff.Save();
+            Stylist newStylistBob = new Stylist("Bob", "Nice", 3);
+            newStylistBob.Save();
+            List<Stylist> listOfStylists = new List<Stylist> { newStylistJeff, newStylistBob };
+            List<Stylist> newList = Stylist.GetAll();
+            CollectionAssert.AreEqual(newList, listOfStylists);
+        }
 
     }
     
