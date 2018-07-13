@@ -37,18 +37,6 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void GetAll_GetsEntries_True()
-        {
-            Client newClientJeff = new Client("Jeff", 4);
-            newClientJeff.Save();
-            Client newClientBob = new Client("Bob", 3);
-            newClientBob.Save();
-            List<Client> listOfStylists = new List<Client> { newClientJeff, newClientBob };
-            List<Client> newList = Client.GetAll();
-            CollectionAssert.AreEqual(newList, listOfStylists);
-        }
-
-        [TestMethod]
         public void Save_SavesStylist_ReturnEqualValue()
         {
             Client newClientBob = new Client("Bob", 3);
@@ -67,6 +55,30 @@ namespace HairSalon.Tests
             Client foundClient = Client.Find(newClientBob.Id);
 
             Assert.AreEqual(foundClient, newClientBob);
+        }
+
+        [TestMethod]
+        public void GetAll_GetsEntries_True()
+        {
+            Client newClientJeff = new Client("Jeff", 4);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", 3);
+            newClientBob.Save();
+            List<Client> listOfStylists = new List<Client> { newClientJeff, newClientBob };
+            List<Client> newList = Client.GetAll();
+            CollectionAssert.AreEqual(newList, listOfStylists);
+        }
+
+        [TestMethod]
+        public void DeleteAll_DeletesAllEntries_True()
+        {
+            Client newClientJeff = new Client("Jeff", 4);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", 3);
+            newClientBob.Save();
+            Client.DeleteAll();
+            List<Client> newList = Client.GetAll();
+            Assert.AreEqual(newList.Count, 0);
         }
     }
 }
