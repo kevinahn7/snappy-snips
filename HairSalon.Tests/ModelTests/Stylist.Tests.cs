@@ -6,7 +6,7 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class StylistTest: IDisposable
+    public class StylistTest : IDisposable
     {
         public void Dispose()
         {
@@ -51,9 +51,9 @@ namespace HairSalon.Tests
         {
             Stylist newStylistJeff = new Stylist("Bob", "Cool", 4);
             newStylistJeff.Save();
-            
+
             Stylist foundStylist = Stylist.Find(newStylistJeff.Id);
-            
+
             Assert.AreEqual(foundStylist, newStylistJeff);
         }
 
@@ -69,7 +69,17 @@ namespace HairSalon.Tests
             CollectionAssert.AreEqual(newList, listOfStylists);
         }
 
-    }
-    
+        [TestMethod]
+        public void DeleteAll_DeletesAllEntries_True()
+        {
+            Stylist newStylistJeff = new Stylist("Jeff", "Cool", 4);
+            newStylistJeff.Save();
+            Stylist newStylistBob = new Stylist("Bob", "Nice", 3);
+            newStylistBob.Save();
+            Stylist.DeleteAll();
+            List<Stylist> newList = Stylist.GetAll();
+            Assert.AreEqual(newList.Count, 0);
+        }
 
+    }
 }
