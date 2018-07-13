@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace HairSalon.Models
 {
@@ -12,7 +13,7 @@ namespace HairSalon.Models
         public string Details { get; set; }
         public int ClientId { get; set; }
 
-        public Stylist(int id, string name, string details, int clientId)
+        public Stylist(string name, string details, int clientId, int id = 0)
         {
             this.Id = id;
             this.Name = name;
@@ -36,7 +37,47 @@ namespace HairSalon.Models
             }
         }
 
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
 
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM stylists;";
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static List<Stylist> GetAll()
+        {
+            List<Stylist> allStylists = new List<Stylist> { };
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM stylists;";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int stylistId = rdr.GetInt32(0);
+                string stylistName = rdr.GetString(1);
+                string stylistDetails = rdr.GetString(2);
+                int stylistClientId = rdr.GetInt32(3);
+                Stylist newStylist = new Stylist(stylistName, stylistDetails, stylistClientId, stylistId);
+                allStylists.Add(newStylist);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return allStylists;
+        }
 
     }
 }
