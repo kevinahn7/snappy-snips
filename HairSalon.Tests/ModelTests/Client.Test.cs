@@ -35,5 +35,27 @@ namespace HairSalon.Tests
 
             Assert.AreEqual(firstItem, secondItem);
         }
+
+        [TestMethod]
+        public void GetAll_GetsEntries_True()
+        {
+            Client newClientJeff = new Client("Jeff", 4, 2);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", 3, 2);
+            newClientBob.Save();
+            List<Client> listOfStylists = new List<Client> { newClientJeff, newClientBob };
+            List<Client> newList = Client.GetAll();
+            CollectionAssert.AreEqual(newList, listOfStylists);
+        }
+
+        [TestMethod]
+        public void Save_SavesStylist_ReturnEqualValue()
+        {
+            Client newClientBob = new Client("Bob", 3);
+            newClientBob.Save();
+            List<Client> allClients = Client.GetAll();
+            List<Client> expectedList = new List<Client>() { newClientBob };
+            CollectionAssert.AreEqual(expectedList, allClients);
+        }
     }
 }
