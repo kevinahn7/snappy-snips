@@ -8,7 +8,8 @@ namespace HairSalon.Controllers
 {
     public class ClientsController : Controller
     {
-        public IActionResult Index()
+        
+        public ActionResult Index()
         {
             return View();
         }
