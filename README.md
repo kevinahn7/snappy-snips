@@ -1,6 +1,6 @@
-# Word Counter
+# Hair Salon
 
-#### Epicodus C# Individual Project #2, July 6th, 2018
+#### Epicodus C# Individual Project #3, July 13th, 2018
 
 #### By Kevin Ahn
 
@@ -11,7 +11,6 @@ This program lets you manage a hair salon and helps you keep track of which styl
 ## User Stories
 
 * As a salon employee, I need to be able to see a list of all our stylists.
-
 * As an employee, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
 * As an employee, I need to add new stylists to our system when they are hired.
 * As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added.
