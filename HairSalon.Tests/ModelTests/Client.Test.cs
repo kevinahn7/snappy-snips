@@ -80,5 +80,17 @@ namespace HairSalon.Tests
             List<Client> newList = Client.GetAll();
             Assert.AreEqual(newList.Count, 0);
         }
+
+        [TestMethod]
+        public void DeleteSingleItem_DeletesAnEntry_True()
+        {
+            Client newClientJeff = new Client("Jeff", 4);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", 3);
+            newClientBob.Save();
+            Client.DeleteSingleClient(newClientBob.Id);
+            List<Client> newList = Client.GetAll();
+            Assert.AreEqual(newList.Count, 1);
+        }
     }
 }

@@ -81,5 +81,17 @@ namespace HairSalon.Tests
             Assert.AreEqual(newList.Count, 0);
         }
 
+        [TestMethod]
+        public void DeleteSingleItem_DeletesAnEntry_True()
+        {
+            Stylist newStylistJeff = new Stylist("Jeff", "Cool", 4);
+            newStylistJeff.Save();
+            Stylist newStylistBob = new Stylist("Bob", "Nice", 3);
+            newStylistBob.Save();
+            Stylist.DeleteSingleStylist(newStylistBob.Id);
+            List<Stylist> newList = Stylist.GetAll();
+            Assert.AreEqual(newList.Count, 1);
+        }
+
     }
 }
