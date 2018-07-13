@@ -82,7 +82,7 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void DeleteSingleItem_DeletesAnEntry_True()
+        public void DeleteSingleStylist_DeletesAnEntry_True()
         {
             Stylist newStylistJeff = new Stylist("Jeff", "Cool", 4);
             newStylistJeff.Save();
@@ -91,6 +91,22 @@ namespace HairSalon.Tests
             Stylist.DeleteSingleStylist(newStylistBob.Id);
             List<Stylist> newList = Stylist.GetAll();
             Assert.AreEqual(newList.Count, 1);
+        }
+
+
+        [TestMethod]
+        public void GetClients_GetsClients_True()
+        {
+            Client newClientJeff = new Client("Jeff", 4);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", 3);
+            newClientBob.Save();
+            Stylist newStylistKevin = new Stylist("Kevin", "Cool");
+            newStylistKevin.Save();
+            List<Client> newList = newStylistKevin.GetClients();
+            List<Client> anotherList = new List<Client> { newClientJeff, newClientBob };
+            
+            CollectionAssert.AreEqual(newList, anotherList);
         }
 
     }

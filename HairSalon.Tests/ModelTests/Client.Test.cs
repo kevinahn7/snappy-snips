@@ -82,7 +82,7 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void DeleteSingleItem_DeletesAnEntry_True()
+        public void DeleteSingleClient_DeletesAnEntry_True()
         {
             Client newClientJeff = new Client("Jeff", 4);
             newClientJeff.Save();
