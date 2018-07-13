@@ -12,7 +12,10 @@
 
     @foreach (var stylist in Model)
     {
-        <div><a href="/stylists/@stylist.Id">@stylist.Name</a></div>
+        <div>
+            <a href="/stylists/@stylist.Id">@stylist.Name</a>
+            <form target="/stylists/@stylist.Id/delete" method="post"><button>Delete</button></form>
+        </div>
     }
 </div>
 
