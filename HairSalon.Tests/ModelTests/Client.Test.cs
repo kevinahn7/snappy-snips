@@ -39,9 +39,9 @@ namespace HairSalon.Tests
         [TestMethod]
         public void GetAll_GetsEntries_True()
         {
-            Client newClientJeff = new Client("Jeff", 4, 2);
+            Client newClientJeff = new Client("Jeff", 4);
             newClientJeff.Save();
-            Client newClientBob = new Client("Bob", 3, 2);
+            Client newClientBob = new Client("Bob", 3);
             newClientBob.Save();
             List<Client> listOfStylists = new List<Client> { newClientJeff, newClientBob };
             List<Client> newList = Client.GetAll();
