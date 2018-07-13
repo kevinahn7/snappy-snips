@@ -37,16 +37,27 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
+        public void Save_SavesStylist_ReturnEqualValue()
+        {
+            Stylist newStylistBob = new Stylist("Bob", "Nice");
+            newStylistBob.Save();
+            List<Stylist> allStylists = Stylist.GetAll();
+            List<Stylist> expectedList = new List<Stylist>() { newStylistBob };
+            CollectionAssert.AreEqual(expectedList, allStylists);
+        }
+
+        [TestMethod]
         public void Find_FindsStylist_ReturnEqualValue()
         {
             Stylist newStylistJeff = new Stylist("Bob", "Cool", 4);
             newStylistJeff.Save();
             
             Stylist foundStylist = Stylist.Find(newStylistJeff.Id);
-
             
             Assert.AreEqual(foundStylist, newStylistJeff);
         }
+
+
 
     }
     
