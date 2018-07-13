@@ -24,10 +24,17 @@ namespace HairSalon.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost("/stylists/add")]
+        [HttpGet("/stylists/add")]
         public ActionResult Add()
         {
             return View();
+        }
+
+        [HttpGet("/stylists/{id}")]
+        public ActionResult Details(int id)
+        {
+            Stylist chosenStylist = Stylist.Find(id);
+            return View(chosenStylist);
         }
     }
 }

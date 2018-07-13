@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Add a stylist";
+}
+
+<h2>Add a stylist</h2>
+
+<form action="/stylists" method="post">
+    <label for="name">Enter a name</label>
+    <input name="name" type="text" />
+    <label for="details">Enter details</label>
+    <input name="details" type="text" />
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/stylists"><button>Back</button></a>

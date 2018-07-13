@@ -2,5 +2,24 @@
     ViewData["Title"] = "Stylists";
 }
 
+<h2>All of our stylists!</h2>
+
 <a href="/stylists/add"><button>Add a stylist</button></a>
 
+
+<div class="stylistsGrid">
+
+
+    @foreach (var stylist in Model)
+    {
+        <a href="/stylists/@stylist.Id">@stylist.Name</a>
+    }
+</div>
+
+
+
+
+
+
+
+<a href="/"><button>Home</button></a>
