@@ -12,8 +12,16 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Index_ReturnsCorrectView_True()
         {
-            HomeController controller = new HomeController();
+            ClientsController controller = new ClientsController();
             ActionResult indexView = controller.Index();
+            Assert.IsInstanceOfType(indexView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void All_ReturnsCorrectView_True()
+        {
+            ClientsController controller = new ClientsController();
+            ActionResult indexView = controller.All();
             Assert.IsInstanceOfType(indexView, typeof(ViewResult));
         }
     }
