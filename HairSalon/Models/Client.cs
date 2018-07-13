@@ -30,7 +30,7 @@ namespace HairSalon.Models
                 Client newClient = (Client)otherClient;
                 bool idEquality = (this.Id == newClient.Id);
                 bool nameEquality = (this.Name == newClient.Name);
-                bool stylistIdEquality = (this.StylistId == newClient.StylistId)
+                bool stylistIdEquality = (this.StylistId == newClient.StylistId);
                 return (idEquality && nameEquality && stylistIdEquality);
             }
         }

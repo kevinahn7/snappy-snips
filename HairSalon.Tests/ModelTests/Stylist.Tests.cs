@@ -21,7 +21,7 @@ namespace HairSalon.Tests
         [TestMethod]
         public void GetSetProperties_GetsSetsProperties_ReturnEqualValue()
         {
-            Stylist newStylist = new Stylist("Bob", "funny guy", 3);
+            Stylist newStylist = new Stylist("Bob", "funny guy");
             newStylist.Name = "Tim";
 
             Assert.AreEqual("Tim", newStylist.Name);
@@ -30,8 +30,8 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Equals_ReturnsTrueIfObjectsAreTheSame_ReturnsEqualValue()
         {
-            Stylist firstItem = new Stylist("Bob", "Cool", 4);
-            Stylist secondItem = new Stylist("Bob", "Cool", 4);
+            Stylist firstItem = new Stylist("Bob", "Cool");
+            Stylist secondItem = new Stylist("Bob", "Cool");
 
             Assert.AreEqual(firstItem, secondItem);
         }
@@ -39,14 +39,16 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Find_FindsStylist_ReturnEqualValue()
         {
-            Stylist newStylistJeff = new Stylist("Bob", "Cool", 4, 1);
-            Stylist newStylistTom = new Stylist("Tom", "Funny", 3, 2);
-            List<Stylist> newList = Stylist.GetAll();
-            Stylist foundStylist = Stylist.Find(1);
-            Stylist actualStylist = newList[1];
-            Assert.AreEqual(foundStylist, actualStylist);
+            Stylist newStylistJeff = new Stylist("Bob", "Cool", 4);
+            newStylistJeff.Save();
+            
+            Stylist foundStylist = Stylist.Find(newStylistJeff.Id);
+
+            
+            Assert.AreEqual(foundStylist, newStylistJeff);
         }
 
     }
+    
 
 }
