@@ -22,8 +22,15 @@ This program lets you manage a hair salon and helps you keep track of which styl
 * Download and install Mono
 * Clone the repo
 * Run `dotnet restore` from within the project directory
-Run `dotnet build` from project directory to build the project
+* Run `dotnet build` from project directory to build the project
 * Run `dotnet test` from the test directory to test the tests
+* Run `dotnet run` from the test directory to start the server
+
+## Receate database
+* CREATE DATABASE hair_salon
+* USE hair_salon
+* CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), details VARCHAR(255), clinet_id INT)
+* CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255))
 
 ## Contribution Requirements
 
