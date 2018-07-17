@@ -93,21 +93,20 @@ namespace HairSalon.Tests
             Assert.AreEqual(newList.Count, 1);
         }
 
-        /*
         [TestMethod]
         public void GetClients_GetsClients_True()
         {
-            Client newClientJeff = new Client("Jeff", 4);
-            newClientJeff.Save();
-            Client newClientBob = new Client("Bob", 3);
-            newClientBob.Save();
             Stylist newStylistKevin = new Stylist("Kevin", "Cool");
             newStylistKevin.Save();
+            Client newClientJeff = new Client("Jeff", newStylistKevin.Id);
+            newClientJeff.Save();
+            Client newClientBob = new Client("Bob", newStylistKevin.Id);
+            newClientBob.Save();
+            
             List<Client> newList = newStylistKevin.GetClients();
             List<Client> anotherList = new List<Client> { newClientJeff, newClientBob };
             
             CollectionAssert.AreEqual(newList, anotherList);
         }
-        */
     }
 }
