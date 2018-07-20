@@ -80,10 +80,10 @@ namespace HairSalon.Models
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"INSERT INTO specialties (name) VALUES (@SpecialtyName);";
 
-            cmd.Parameters.AddWithValue("@SpecialtyName", this.Name);
+            cmd.Parameters.AddWithValue("@SpecialtyName", Name);
 
             cmd.ExecuteNonQuery();
-            this.Id = (int)cmd.LastInsertedId;
+            Id = (int)cmd.LastInsertedId;
 
             conn.Close();
             if (conn != null)

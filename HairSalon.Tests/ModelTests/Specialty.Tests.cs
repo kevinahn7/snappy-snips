@@ -39,7 +39,7 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Save_SavesSpecialty_ReturnEqualValue()
         {
-            Specialty newSpecialty = new Specialty("Nice");
+            Specialty newSpecialty = new Specialty("Nice", 34);
             newSpecialty.Save();
             List<Specialty> allSpecialties = Specialty.GetAll();
             List<Specialty> expectedList = new List<Specialty>() { newSpecialty };
@@ -57,17 +57,17 @@ namespace HairSalon.Tests
             Assert.AreEqual(foundSpecialty, newSpecialty);
         }
 
-        /*[TestMethod]
+        [TestMethod]
         public void GetAll_GetsEntries_True()
         {
-            Specialty newSpecialtyCool = new Specialty("Cool");
+            Specialty newSpecialtyCool = new Specialty("Cool", 4);
             newSpecialtyCool.Save();
-            Specialty newSpecialtyNice = new Specialty("Nice");
+            Specialty newSpecialtyNice = new Specialty("Nice", 3);
             newSpecialtyNice.Save();
             List<Specialty> ListOfSpecialties = new List<Specialty> { newSpecialtyCool, newSpecialtyNice };
             List<Specialty> newList = Specialty.GetAll();
             CollectionAssert.AreEqual(newList, ListOfSpecialties);
-        }*/
+        }
 
         [TestMethod]
         public void DeleteAll_DeletesAllEntries_True()
@@ -92,4 +92,5 @@ namespace HairSalon.Tests
             List<Specialty> newList = Specialty.GetAll();
             Assert.AreEqual(newList.Count, 1);
         }
+    }
 }

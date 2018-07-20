@@ -9,6 +9,12 @@
     <input name="name" type="text" required />
     <label for="details">Enter details</label>
     <input name="details" type="text" required />
+    <select name="specialtyIdList" multiple="multiple">
+        @foreach (var specialty in Model)
+        {
+            <option value="@specialty.Id">@specialty.Name</option>
+        }
+    </select>
     <button type="submit">Submit</button>
 </form>
 

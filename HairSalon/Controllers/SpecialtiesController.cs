@@ -17,17 +17,15 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/specialties")]
-        public ActionResult Create(string name, List<int> StylistIdList)
+        public ActionResult Create(string name, List<int> stylistIdList)
         {
             Specialty newSpecialty = new Specialty(name);
             newSpecialty.Save();
-            foreach (int stylistId in StylistIdList)
+            foreach (int stylistId in stylistIdList)
             {
                 newSpecialty.AddStylist(stylistId);
             }
-
-            
-
+           
             return RedirectToAction("Index");
         }
 

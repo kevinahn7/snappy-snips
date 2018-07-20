@@ -171,7 +171,7 @@ namespace HairSalon.Models
             }
         }
 
-        public void AddSpecialty(Specialty newSpecialty)
+        public void AddSpecialty(int specialistId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -179,7 +179,7 @@ namespace HairSalon.Models
             cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
 
             cmd.Parameters.AddWithValue("@StylistId", Id);
-            cmd.Parameters.AddWithValue("@SpecialtyId", newSpecialty.Id);
+            cmd.Parameters.AddWithValue("@SpecialtyId", specialistId);
 
             cmd.ExecuteNonQuery();
             conn.Close();
