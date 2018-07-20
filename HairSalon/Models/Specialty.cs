@@ -18,15 +18,15 @@ namespace HairSalon.Models
             this.Name = name;
         }
 
-        public override bool Equals(System.Object otherStylist)
+        public override bool Equals(System.Object otherSpecialty)
         {
-            if (!(otherStylist is Specialty))
+            if (!(otherSpecialty is Specialty))
             {
                 return false;
             }
             else
             {
-                Specialty newSpecialty = (Specialty)otherStylist;
+                Specialty newSpecialty = (Specialty)otherSpecialty;
                 bool nameEquality = (this.Name == newSpecialty.Name);
                 return (nameEquality);
             }
@@ -98,7 +98,7 @@ namespace HairSalon.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM `specialty` WHERE id = @thisId;";
+            cmd.CommandText = @"SELECT * FROM `specialties` WHERE id = @thisId;";
 
             cmd.Parameters.AddWithValue("@thisId", id);
 
@@ -123,7 +123,7 @@ namespace HairSalon.Models
             return foundItem;
         }
 
-        public static void DeleteSingleStylist(int id)
+        public static void DeleteSingleSpecialty(int id)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
