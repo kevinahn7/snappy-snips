@@ -219,5 +219,22 @@ namespace HairSalon.Models
             return specialties;
         }
 
+        public void Update()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE stylists SET name = @StylistName WHERE id = @StylistId;";
+            cmd.Parameters.AddWithValue("@StylistName", Name);
+            cmd.Parameters.AddWithValue("@StylistId", Id);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
     }
 }

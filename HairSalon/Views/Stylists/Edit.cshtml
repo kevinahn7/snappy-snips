@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Edit stylist";
+}
+
+<h2>Edit @Model.Name</h2>
+
+<form action="/stylists/@Model.Id/edit" method="post">
+    <label for="name">Enter a name</label>
+    <input name="name" type="text" />
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/stylists"><button>Back</button></a>

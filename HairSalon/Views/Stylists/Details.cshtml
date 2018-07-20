@@ -7,18 +7,15 @@
 <div class="chosenStylistsGrid">
     <div>Name: @Model.Name</div>
     <div>Details: @Model.Details</div>
-    <div>Clients: 
+    <div>
+        Clients:
         @foreach (var client in Model.GetClients())
         {
             <div>@client.Name</div>
         }
     </div>
+    <a href="/stylists/@Model.Id/edit"><button>Edit @Model.Name</button></a>
 </div>
 
 
-
-
-
-
-<a href="/clients/all"><button>View all clients</button></a>
 <a href="/stylists"><button>Back</button></a>
