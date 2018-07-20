@@ -14,6 +14,13 @@
             <div>@client.Name</div>
         }
     </div>
+    <div>
+        Specialties:
+        @foreach (var specialty in Model.GetSpecialties())
+        {
+            <div>@specialty.Name</div>
+        }
+    </div>
     <a href="/stylists/@Model.Id/edit"><button>Edit @Model.Name</button></a>
 </div>
 

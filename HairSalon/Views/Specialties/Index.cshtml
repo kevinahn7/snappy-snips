@@ -12,12 +12,16 @@
 
     @foreach (var specialty in Model)
     {
-        <div>
-            <a href="/specialties/@specialty.Id">@specialty.Name</a>
-        </div>
+    <div>
+        <a href="/specialties/@specialty.Id">@specialty.Name</a>
+        <a href="/specialties/@specialty.Id/delete"><button>Delete</button></a>
+    </div>
     }
 </div>
 
+<form action="/specialties/delete" method="post">
+    <button type="submit">Delete all specialties</button>
+</form>
 
 
 
