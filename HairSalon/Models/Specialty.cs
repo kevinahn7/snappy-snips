@@ -138,5 +138,55 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
         }
+
+        public void AddStylist(Stylist newStylist)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
+
+            cmd.Parameters.AddWithValue("@StylistId", newStylist.Id);
+            cmd.Parameters.AddWithValue("@SpecialtyId", Id);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public List<Stylist> GetStylists()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT stylists.* FROM specialties
+                JOIN stylists_specialties ON (specialty.id = stylists_specialties.specialty_id)
+                JOIN items ON (stylists_specialties.stylist_id = stylists.id)
+                WHERE specialties.id = @StylistId;";
+
+            cmd.Parameters.AddWithValue("@StylistId", Id);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            List<Stylist> stylists = new List<Stylist> { };
+
+            while (rdr.Read())
+            {
+                int stylistId = rdr.GetInt32(0);
+                string stylistName = rdr.GetString(1);
+                string stylistDetails = rdr.GetString(2);
+                Stylist newStylist = new Stylist(stylistName, stylistDetails, stylistId);
+                stylists.Add(newStylist);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return stylists;
+        }
+
     }
 }

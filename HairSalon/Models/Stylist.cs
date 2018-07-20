@@ -171,7 +171,7 @@ namespace HairSalon.Models
             }
         }
 
-        public void addSpecialty(Specialty newSpecialty)
+        public void AddSpecialty(Specialty newSpecialty)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -193,38 +193,23 @@ namespace HairSalon.Models
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
-            var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT specialty_id FROM stylists_specialties WHERE stylist_id = @StylistId;";
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT specialties.* FROM stylists
+                JOIN stylists_specialties ON (stylist.id = stylists_specialties.stylist_id)
+                JOIN items ON (stylists_specialties.specialty_id = specialty.id)
+                WHERE stylists.id = @SpecialtyId;";
 
-            cmd.Parameters.AddWithValue("@StylistId", Id);
+            cmd.Parameters.AddWithValue("@SpecialtyId", Id);
 
-            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            List<Specialty> specialties = new List<Specialty> { };
 
-            List<int> specialtyIds = new List<int> { };
             while (rdr.Read())
             {
                 int specialtyId = rdr.GetInt32(0);
-                specialtyIds.Add(specialtyId);
-            }
-            rdr.Dispose();
-
-            List<Specialty> specialties = new List<Specialty> { };
-            foreach (int specialtyId in specialtyIds)
-            {
-                var specialtyQuery = conn.CreateCommand() as MySqlCommand;
-                specialtyQuery.CommandText = @"SELECT * FROM specialties WHERE id = @SpecialtyId;";
-
-                cmd.Parameters.AddWithValue("@SpecialtyId", Id);
-
-                var specialtyQueryRdr = specialtyQuery.ExecuteReader() as MySqlDataReader;
-                while (specialtyQueryRdr.Read())
-                {
-                    int thisSpecialtyId = specialtyQueryRdr.GetInt32(0);
-                    string specialtyName = specialtyQueryRdr.GetString(1);
-                    Specialty foundSpecialty = new Specialty(specialtyName, thisSpecialtyId);
-                    specialties.Add(foundSpecialty);
-                }
-                specialtyQueryRdr.Dispose();
+                string specialtyName = rdr.GetString(1);
+                Specialty newSpecialty = new Specialty(specialtyName, specialtyId);
+                specialties.Add(newSpecialty);
             }
             conn.Close();
             if (conn != null)
