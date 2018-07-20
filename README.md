@@ -1,12 +1,12 @@
 # Hair Salon
 
-#### Epicodus C# Individual Project #3, July 13th, 2018
+#### Epicodus C# Individual Project #4, July 20th, 2018
 
 #### By Kevin Ahn
 
 ## Description
 
-This program lets you manage a hair salon and helps you keep track of which stylists has which clients and to add more stylists or clients to the database.
+This program lets you manage a hair salon and helps you keep track of which stylists has which clients and to add more stylists or clients to the database. This is a continuation of the project hair-salon to add additional features.
 
 ## User Stories
 
@@ -14,6 +14,17 @@ This program lets you manage a hair salon and helps you keep track of which styl
 * As an employee, I need to be able to select a stylist, see their details, and see a list of all clients that belong to that stylist.
 * As an employee, I need to add new stylists to our system when they are hired.
 * As an employee, I need to be able to add new clients to a specific stylist. I should not be able to add a client if no stylists have been added.
+* As an employee, I need to be able to delete stylists (all and single).
+* As an employee, I need to be able to delete clients (all and single).
+* As an employee, I need to be able to view clients (all and single).
+* As an employee, I need to be able to edit JUST the name of a stylist. (You can choose to allow employees to edit additional properties but it is not required.)
+* As an employee, I need to be able to edit ALL of the information for a client.
+* As an employee, I need to be able to add a specialty and view all specialties that have been added.
+* As an employee, I need to be able to add a specialty to a stylist.
+* As an employee, I need to be able to click on a specialty and see all of the stylists that have that specialty.
+* As an employee, I need to see the stylist's specialties on the stylist's details page.
+* As an employee, I need to be able to add a stylist to a specialty.
+
 
 
 ## Setup on OSX
@@ -48,7 +59,7 @@ This program lets you manage a hair salon and helps you keep track of which styl
 
 ## Links
 
-* [The Repository](https://github.com/kevinahn7/hair-salon)
+* [The Repository](https://github.com/kevinahn7/snappy-snips)
 
 ## License
 
