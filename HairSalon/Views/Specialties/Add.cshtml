@@ -6,7 +6,7 @@
 
 <form action="/specialties" method="post">
     <label for="name">Enter a specialty name</label>
-    <input name="name" type="text" />
+    <input name="name" type="text" required />
     <select name="stylistIdList" multiple="multiple">
         @foreach (var stylist in Model)
         {

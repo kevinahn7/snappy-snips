@@ -6,8 +6,8 @@
 
 <form action="/clients/@Model.Id/edit" method="post">
     <label for="name">Enter a name</label>
-    <input name="name" type="text" />
-    <select name="stylistId">
+    <input name="name" type="text" required />
+    <select name="stylistId" required>
         @foreach (var stylist in Model.GetAllStylists())
         {
             <option value="@stylist.Id">@stylist.Name</option>

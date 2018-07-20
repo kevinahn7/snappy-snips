@@ -12,9 +12,9 @@ else
 {
     <form action="/clients" method="post">
         <label for="name">Name</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" required />
         <label for="stylist">Stylist</label>
-        <select name="stylistId">
+        <select name="stylistId" required >
             @foreach (var stylist in Model)
             {
                 <option value="@stylist.Id">@stylist.Name</option>
