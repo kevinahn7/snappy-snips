@@ -20,9 +20,10 @@ namespace HairSalon.Controllers
         public ActionResult Create(string name, int stylistId)
         {
             Specialty newSpecialty = new Specialty(name);
+            newSpecialty.Save();
             newSpecialty.AddStylist(stylistId);
 
-            newSpecialty.Save();
+            
 
             return RedirectToAction("Index");
         }
