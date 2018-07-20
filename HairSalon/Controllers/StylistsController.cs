@@ -43,5 +43,12 @@ namespace HairSalon.Controllers
             Stylist.DeleteSingleStylist(id);
             return RedirectToAction("Index");
         }
+
+        [HttpPost("/stylists/delete")]
+        public ActionResult DeleteAll()
+        {
+            Stylist.DeleteAll();
+            return RedirectToAction("Index");
+        }
     }
 }

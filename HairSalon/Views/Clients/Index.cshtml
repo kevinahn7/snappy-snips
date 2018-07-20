@@ -12,19 +12,19 @@ else
 {
     <form action="/clients" method="post">
         <label for="name">Name</label>
-        <input type="text" name="name"/>
+        <input type="text" name="name" />
         <label for="stylist">Stylist</label>
         <select name="stylistId">
-            @foreach(var stylist in Model)
+            @foreach (var stylist in Model)
             {
                 <option value="@stylist.Id">@stylist.Name</option>
             }
         </select>
         <button type="submit">Submit</button>
     </form>
-}
 
-<a href="/clients/all"><button>View all clients</button></a>
+    <a href="/clients/all"><button>View all clients</button></a>
+}
 
 <a href="/"><button>Back</button></a>
 
