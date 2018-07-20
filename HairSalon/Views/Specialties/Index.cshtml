@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Specialties";
+}
+
+<h2>All of our specialties</h2>
+
+<a href="/specialties/add"><button>Add a specialty</button></a>
+
+
+<div class="specialtiesGrid">
+
+
+    @foreach (var specialty in Model)
+    {
+        <div>
+            <a href="/specialties/@specialty.Id">@specialty.Name</a>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+<a href="/"><button>Home</button></a>

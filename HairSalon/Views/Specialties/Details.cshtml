@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Specialties";
+}
+
+<h2>Specialty: @Model.Name</h2>
+
+<div class="chosenSpecialtiesGrid">
+    <div>Name: @Model.Name</div>
+    <!--<div>Clients: 
+        @foreach (var client in Model.GetClients())
+        {
+            <div>@client.Name</div>
+        }
+    </div> Add ability to add stylists to this-->
+</div>
+
+
+
+
+
+
+<a href="/stylists/all"><button>View all stylists</button></a>
+<a href="/specialties"><button>Back</button></a>

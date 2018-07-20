@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Add a specialty";
+}
+
+<h2>Add a specialty</h2>
+
+<form action="/specialties" method="post">
+    <label for="name">Enter a specialty name</label>
+    <input name="name" type="text" />
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/specialties"><button>Back</button></a>
