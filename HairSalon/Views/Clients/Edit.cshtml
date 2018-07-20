@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Edit client";
+}
+
+<h2>Edit @Model.Name</h2>
+
+<form action="/clients/@Model.Id/edit" method="post">
+    <label for="name">Enter a name</label>
+    <input name="name" type="text" />
+    <select name="stylistId">
+        @foreach (var stylist in Model.GetAllStylists())
+        {
+            <option value="@stylist.Id">@stylist.Name</option>
+        }
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/stylists"><button>Back</button></a>
