@@ -8,7 +8,7 @@
 @foreach (var client in Model)
 {
     <div>
-        @client.Name
+        <a href="/clients/@client.Id">@client.Name</a>
         <a href="/clients/@client.Id/delete"><button>Delete</button></a>
     </div>
 }

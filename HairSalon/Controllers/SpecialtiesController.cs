@@ -17,17 +17,21 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/specialties")]
-        public ActionResult Index(string name)
+        public ActionResult Create(string name, int stylistId)
         {
             Specialty newSpecialty = new Specialty(name);
+            newSpecialty.AddStylist(stylistId);
+
             newSpecialty.Save();
+
             return RedirectToAction("Index");
         }
 
         [HttpGet("/specialties/add")]
         public ActionResult Add()
         {
-            return View();
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View(allStylists);
         }
 
         [HttpGet("/specialties/{id}")]

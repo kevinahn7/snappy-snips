@@ -139,14 +139,14 @@ namespace HairSalon.Models
             }
         }
 
-        public void AddStylist(Stylist newStylist)
+        public void AddStylist(int stylistId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
 
-            cmd.Parameters.AddWithValue("@StylistId", newStylist.Id);
+            cmd.Parameters.AddWithValue("@StylistId", stylistId);
             cmd.Parameters.AddWithValue("@SpecialtyId", Id);
 
             cmd.ExecuteNonQuery();
@@ -163,8 +163,8 @@ namespace HairSalon.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT stylists.* FROM specialties
-                JOIN stylists_specialties ON (specialty.id = stylists_specialties.specialty_id)
-                JOIN items ON (stylists_specialties.stylist_id = stylists.id)
+                JOIN stylists_specialties ON (specialty_id = stylists_specialties.specialty_id)
+                JOIN stylists ON (stylists_specialties.stylist_id = stylists.id)
                 WHERE specialties.id = @StylistId;";
 
             cmd.Parameters.AddWithValue("@StylistId", Id);

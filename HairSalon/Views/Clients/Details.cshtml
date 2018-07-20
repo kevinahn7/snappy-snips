@@ -1,12 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Specialties";
+    ViewData["Title"] = "Client";
 }
 
 <h2>Specialty: @Model.Name</h2>
 
-<div class="chosenSpecialtiesGrid">
+<div class="chosenClientsGrid">
     <div>@Model.Name</div>
-    <div>Stylists who have this speciality: 
+    <div>Stylist:  
         @foreach (var stylist in Model.GetStylists())
         {
             <div>@stylist.Name</div>
@@ -19,5 +19,5 @@
 
 
 
-<a href="/stylists/all"><button>View all stylists</button></a>
+<a href="/stylists"><button>View all stylists</button></a>
 <a href="/specialties"><button>Back</button></a>
